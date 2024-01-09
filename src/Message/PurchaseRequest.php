@@ -11,7 +11,7 @@
 
 namespace Omnipay\BitPay\Message;
 
-use BitPaySDK\Model\Invoice\Invoice;
+use BitPaySDKLight\Model\Invoice\Invoice;
 use Omnipay\Common\Exception\InvalidRequestException;
 
 /**
@@ -51,8 +51,8 @@ class PurchaseRequest extends AbstractRequest
      *
      * @return PurchaseResponse
      * @throws InvalidRequestException
-     * @throws \BitPaySDK\Exceptions\BitPayException
-     * @throws \BitPaySDK\Exceptions\InvoiceCreationException
+     * @throws \BitPaySDKLight\Exceptions\BitPayException
+     * @throws \BitPaySDKLight\Exceptions\InvoiceCreationException
      */
     public function sendData($data)
     {

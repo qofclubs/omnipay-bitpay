@@ -2,8 +2,8 @@
 
 namespace Omnipay\BitPay\Message;
 
-use BitPaySDK\Exceptions\BitPayException;
-use BitPaySDK\Exceptions\InvoiceQueryException;
+use BitPaySDKLight\Exceptions\BitPayException;
+use BitPaySDKLight\Exceptions\InvoiceQueryException;
 use Omnipay\Common\Exception\InvalidRequestException;
 
 /**

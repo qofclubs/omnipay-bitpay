@@ -2,8 +2,8 @@
 
 namespace Omnipay\BitPay\Tests\Message;
 
-use BitPaySDK\Model\Invoice\Invoice;
-use BitPaySDK\Model\Invoice\InvoiceStatus;
+use BitPaySDKLight\Model\Invoice\Invoice;
+use BitPaySDKLight\Model\Invoice\InvoiceStatus;
 use Omnipay\BitPay\Message\CompletePurchaseRequest;
 use Omnipay\BitPay\Message\CompletePurchaseResponse;
 use Omnipay\Tests\TestCase;

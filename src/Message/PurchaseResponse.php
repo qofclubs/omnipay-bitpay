@@ -11,7 +11,7 @@
 
 namespace Omnipay\BitPay\Message;
 
-use BitPaySDK\Model\Invoice\Invoice;
+use BitPaySDKLight\Model\Invoice\Invoice;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
 use Omnipay\Common\Message\RequestInterface;
