@@ -46,11 +46,10 @@
     ],
     "require": {
         "omnipay/common": "^3.0",
-        "bitpay/sdk-light": "^2.0"
+        "bitpay/sdk-light": "^2.2"
     },
     "require-dev": {
-        "omnipay/tests": "^4.0",
-        "bitpay/sdk-light": "dev-master as 2.0"
+        "omnipay/tests": "^4.0"
     },
     "extra": {
         "branch-alias": {
