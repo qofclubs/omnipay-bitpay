@@ -13,12 +13,13 @@ namespace Omnipay\BitPay\Message;
 
 use BitPaySDKLight\Model\Invoice\Invoice;
 use Omnipay\Common\Message\AbstractResponse;
+use Omnipay\Common\Message\RedirectResponseInterface;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
  * BitPay Complete Purchase Response.
  */
-class PurchaseResponse extends AbstractResponse
+class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
     /**
      * @var CompletePurchaseRequest

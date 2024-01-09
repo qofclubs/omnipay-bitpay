@@ -63,15 +63,9 @@
             "Omnipay\\BitPay\\Tests\\": "tests"
         }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/SilverFire/php-bitpay-light-client"
-        }
-    ],
     "config": {
         "allow-plugins": {
-            "hiqdev/composer-config-plugin": true
+            "php-http/discovery": false
         }
     }
 }
