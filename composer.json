@@ -17,7 +17,7 @@
     ],
     "require": {
         "omnipay/common": "^3.0",
-        "bitpay/sdk": "^7.4"
+        "bitpay/sdk": "7.4.x"
     },
     "require-dev": {
         "omnipay/tests": "^4.0"
