@@ -11,9 +11,9 @@
 
 namespace Omnipay\BitPay\Message;
 
-use BitPaySDKLight\Model\Invoice\Buyer;
-use BitPaySDKLight\Model\Invoice\Invoice;
-use BitPaySDKLight\Model\Invoice\InvoiceStatus;
+use BitPaySDK\Model\Invoice\Buyer;
+use BitPaySDK\Model\Invoice\Invoice;
+use BitPaySDK\Model\Invoice\InvoiceStatus;
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;

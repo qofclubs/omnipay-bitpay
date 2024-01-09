@@ -2,7 +2,7 @@
 
 namespace Omnipay\BitPay\Tests\Message;
 
-use BitPaySDKLight\Model\Invoice\Invoice;
+use BitPaySDK\Model\Invoice\Invoice;
 use Omnipay\BitPay\Message\PurchaseRequest;
 use Omnipay\Tests\TestCase;
 

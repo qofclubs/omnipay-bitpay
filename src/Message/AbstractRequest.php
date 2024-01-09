@@ -10,10 +10,9 @@
  */
 
 namespace Omnipay\BitPay\Message;
-
-use BitPaySDKLight\Client;
-use BitPaySDKLight\Env;
-use BitPaySDKLight\Exceptions\BitPayException;
+use BitPaySDK\Client;
+use BitPaySDK\Env;
+use BitPaySDK\Exceptions\BitPayException;
 
 /**
  * PayPal Abstract Request.
