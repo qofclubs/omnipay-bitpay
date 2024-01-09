@@ -26,6 +26,7 @@ use Omnipay\Common\AbstractGateway;
  */
 class Gateway extends AbstractGateway
 {
+
     public function getName()
     {
         return 'BitPay';
@@ -35,6 +36,7 @@ class Gateway extends AbstractGateway
     {
         return [
             'testMode' => false,
+            'transactionSpeed' => 'high',
         ];
     }
 
@@ -64,5 +66,21 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = [])
     {
         return $this->createRequest(CompletePurchaseRequest::class, $parameters);
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransactionSpeed(): string
+    {
+        return $this->getParameter('transactionSpeed');
+    }
+
+    /**
+     * @param string $transactionSpeed high|medium|low
+     */
+    public function setTransactionSpeed(string $transactionSpeed)
+    {
+        return $this->setParameter('transactionSpeed', $transactionSpeed);
     }
 }

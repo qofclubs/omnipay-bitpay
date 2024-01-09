@@ -59,6 +59,7 @@ class PurchaseRequest extends AbstractRequest
         $bitpay = $this->getClient();
         $basicInvoice = new Invoice((float)$this->getAmount(), $this->getCurrency());
         $basicInvoice->setFullNotifications(true);
+        $basicInvoice->setTransactionSpeed('high');
         $basicInvoice->setRedirectURL($this->getReturnUrl());
         $basicInvoice->setNotificationURL($this->getNotifyUrl());
         $basicInvoice->setPosData(json_encode($this->buildPosData()));
