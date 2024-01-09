@@ -61,6 +61,8 @@ class PurchaseRequest extends AbstractRequest
         $basicInvoice->setFullNotifications(true);
         $basicInvoice->setTransactionSpeed('high');
         $basicInvoice->setRedirectURL($this->getReturnUrl());
+        $basicInvoice->setAutoRedirect(true);
+        $basicInvoice->setCloseURL($this->getCancelUrl());
         $basicInvoice->setNotificationURL($this->getNotifyUrl());
         $basicInvoice->setPosData(json_encode($this->buildPosData()));
         $basicInvoice->setItemDesc($this->getDescription());
