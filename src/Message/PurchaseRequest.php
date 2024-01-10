@@ -30,15 +30,20 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate(
             'token',
-            'transactionId', 'description',
-            'amount', 'currency',
-            'returnUrl', 'notifyUrl'
+            'transactionId',
+            'description',
+            'amount',
+            'currency',
+            'returnUrl',
+            'closeUrl',
+            'notifyUrl'
         );
 
         return [
             'amount' => $this->getAmount(),
             'currency_code' => strtoupper($this->getCurrency()),
             'notifyUrl' => $this->getNotifyUrl(),
+            'closeUrl' => $this->getCancelUrl(),
             'return' => $this->getReturnUrl(),
             'item_number' => $this->getTransactionId(),
             'item_name' => $this->getDescription(),
