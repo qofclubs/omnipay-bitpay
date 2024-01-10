@@ -11,7 +11,6 @@
 
 namespace Omnipay\BitPay\Message;
 
-use BitPaySDKLight\Model\Invoice\Buyer;
 use BitPaySDKLight\Model\Invoice\Invoice;
 use BitPaySDKLight\Model\Invoice\InvoiceStatus;
 use Omnipay\Common\Exception\InvalidResponseException;
@@ -40,13 +39,30 @@ class CompletePurchaseResponse extends AbstractResponse
         $this->checkPosData();
     }
 
+    protected function checkPosData()
+    {
+        $data = $this->getPosData();
+        if ($data === null || !isset($data['posData'])) {
+            throw new InvalidResponseException('Failed to decode JSON');
+        }
+    }
+
+    /**
+     * @return array
+     */
+    public function getPosData()
+    {
+        return @json_decode($this->data->getPosData(), true);
+    }
+
     /**
      * Whether the payment is successful.
      * @return boolean
      */
     public function isSuccessful()
     {
-        return $this->data->getStatus() === InvoiceStatus::Confirmed || $this->data->getStatus() === InvoiceStatus::Complete;
+        return $this->data->getStatus() === InvoiceStatus::Confirmed || $this->data->getStatus(
+            ) === InvoiceStatus::Complete;
     }
 
     /**
@@ -59,15 +75,6 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * {@inheritdoc}
-     * @return string
-     */
-    public function getTransactionReference()
-    {
-        return $this->data->getId();
-    }
-
-    /**
      * Retruns the transatcion status.
      * @return string
      */
@@ -77,24 +84,24 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
-     * @return bool
-     */
-    public function isStatusExceptional()
-    {
-        return in_array($this->getData()->getExceptionStatus(), ['paidPartial', 'paidOver']);
-    }
-
-    /**
      * {@inheritdoc}
      * @return string
      */
     public function getAmount()
     {
         if ($this->isStatusExceptional()) {
-            return (string)$this->getData()->getAmount();
+            return (string)$this->data->getAmount();
         }
 
         return (string)$this->data->getPrice();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStatusExceptional()
+    {
+        return in_array($this->data->getExceptionStatus(), ['paidPartial', 'paidOver']);
     }
 
     /**
@@ -135,6 +142,15 @@ class CompletePurchaseResponse extends AbstractResponse
     }
 
     /**
+     * {@inheritdoc}
+     * @return string
+     */
+    public function getTransactionReference()
+    {
+        return $this->data->getId();
+    }
+
+    /**
      * Returns the payment date.
      * @return string
      */
@@ -152,24 +168,8 @@ class CompletePurchaseResponse extends AbstractResponse
     /**
      * @return array
      */
-    public function getPosData()
-    {
-        return @json_decode($this->data->getPosData(), true);
-    }
-
-    /**
-     * @return Invoice
-     */
     public function getData()
     {
-        return parent::getData();
-    }
-
-    protected function checkPosData()
-    {
-        $data = $this->getPosData();
-        if ($data === null || !isset($data['posData'])) {
-            throw new InvalidResponseException('Failed to decode JSON');
-        }
+        return $this->data->toArray();
     }
 }
