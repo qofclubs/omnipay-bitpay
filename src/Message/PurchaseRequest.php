@@ -12,6 +12,7 @@
 namespace Omnipay\BitPay\Message;
 
 use BitPaySDKLight\Model\Invoice\Invoice;
+use Omnipay\BitPay\Gateway;
 use Omnipay\Common\Exception\InvalidRequestException;
 
 /**
@@ -56,15 +57,18 @@ class PurchaseRequest extends AbstractRequest
      */
     public function sendData($data)
     {
+        $buyer = new Buyer();
+
         $bitpay = $this->getClient();
         $basicInvoice = new Invoice((float)$this->getAmount(), $this->getCurrency());
         $basicInvoice->setFullNotifications(true);
-        $basicInvoice->setTransactionSpeed('high');
+        $basicInvoice->setTransactionSpeed(Gateway::TRANSACTION_SPEED_HIGH);
         $basicInvoice->setRedirectURL($this->getReturnUrl());
         $basicInvoice->setAutoRedirect(true);
         $basicInvoice->setCloseURL($this->getCancelUrl());
         $basicInvoice->setNotificationURL($this->getNotifyUrl());
         $basicInvoice->setPosData(json_encode($this->buildPosData()));
+        $basicInvoice->setBuyer($buyer);
         $basicInvoice->setItemDesc($this->getDescription());
 
         $invoice = $bitpay->createInvoice($basicInvoice);

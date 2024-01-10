@@ -15,17 +15,14 @@ use Omnipay\BitPay\Message\PurchaseRequest;
 use Omnipay\Common\AbstractGateway;
 
 /**
- * @method \Omnipay\Common\Message\RequestInterface authorize(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface refund(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
- * @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
  */
 class Gateway extends AbstractGateway
 {
+
+    const TRANSACTION_SPEED_HIGH = 'high';
+    const TRANSACTION_SPEED_MEDIUM = 'medium';
+    const TRANSACTION_SPEED_LOW = 'low';
+
 
     public function getName()
     {
@@ -36,7 +33,7 @@ class Gateway extends AbstractGateway
     {
         return [
             'testMode' => false,
-            'transactionSpeed' => 'high',
+            'transactionSpeed' => self::TRANSACTION_SPEED_LOW
         ];
     }
 
