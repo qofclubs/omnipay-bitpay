@@ -26,7 +26,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
     public function setId($value)
     {
-        $this->setTransactionReference($value);
+        $this->setTransactionId($value);
     }
 
     /**
@@ -40,7 +40,7 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        $invoice = $this->getClient()->getInvoice($this->getTransactionReference());
+        $invoice = $this->getClient()->getInvoice($this->getTransactionId());
 
         return $this->response = new CompletePurchaseResponse($this, $invoice);
     }
