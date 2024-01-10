@@ -40,7 +40,7 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        $invoice = $this->getClient()->getInvoice($this->getTransactionId());
+        $invoice = $this->getClient()->getInvoice($this->getTransactionReference());
 
         return $this->response = new CompletePurchaseResponse($this, $invoice);
     }
