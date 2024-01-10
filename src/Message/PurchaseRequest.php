@@ -11,6 +11,7 @@
 
 namespace Omnipay\BitPay\Message;
 
+use BitPaySDKLight\Model\Invoice\Buyer;
 use BitPaySDKLight\Model\Invoice\Invoice;
 use Omnipay\BitPay\Gateway;
 use Omnipay\Common\Exception\InvalidRequestException;
