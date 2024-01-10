@@ -35,7 +35,7 @@ class PurchaseRequest extends AbstractRequest
             'amount',
             'currency',
             'returnUrl',
-            'closeUrl',
+            'cancelUrl',
             'notifyUrl'
         );
 
